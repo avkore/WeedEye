@@ -42,7 +42,7 @@ include('parts/head.php');
 		if ($row['instock'] == 0) {
 			$instock = "No";
 		} else if ($row['instock'] > 0) {
-			$instock = "Yes";
+			$instock = $row['instock'] . " Available";
 		}
 
 		$thc = $row["THC"];

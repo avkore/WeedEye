@@ -48,6 +48,7 @@ session_start();
 								<li><a href="instruction.php">Insturction</a></li>
 								<li><a href="news.php">Blog</a></li>
 								<li><a href="contact.php">Contact</a></li>
+								<li><a href="contact.php">Chat Now</a></li>
 
 								<li>
 									<div class="header-icons">

@@ -130,17 +130,14 @@ if (!isset($_SESSION['id'])) {
           <div class="inputs">
             <form action="" method="post">
               <br> <input type="text" name="name" value="<?php echo $name ?>" placeholder="Write your name here">
-              <input type="tel" placeholder="(+995) 557-456-789" name="phone" value="<?php echo $phone ?>" placeholder="Write your phone number">
+              <input type="tel" name="phone" value="<?php echo $phone ?>" placeholder="Write Your Phone Number">
               <input type="text" name="address" id="username-input" autocomplete="false" placeholder="Please write your address" value="<?php echo $address ?>">
               <br><button class="btns" name="updateInfo" id="updateprofile">Update Profile</button>
             </form>
 
-            <div class="settingbuttons">
-              
+            <div class="settingbuttons">   
               <button class="btns" id="deleteBtn">Delete Account</button>
             </div>
-
-
 
           </div>
         </div>
@@ -186,13 +183,26 @@ if (!isset($_SESSION['id'])) {
               $result = mysqli_query($conn, $sql);
 
               while ($row = mysqli_fetch_array($result)) {
-                $newString = str_replace(',', " <br> ", $row[2]);
+                $newString = str_replace(',', " <br> ", $row[6]);
+
+                if ($row['status'] == 0) 
+                {
+                  $status = "Pending";
+                } 
+                else if ($row['status'] == 1) 
+                {
+                  $status = "Finished";
+                }
+                else
+                {
+                  $status = "Current";
+                }
+
               ?>
                 <div class="order collapsible" id="orders">
                   <div>
-                    <h1 class="orderh1"> Order #<?php echo $row[0]; ?> <span> <?php echo $row[4]; ?></span>
+                    <h1 class="orderh1"> Order #<?php echo $row[0]; ?> &nbsp &nbsp <span><?php echo $row[14]; ?></span>&nbsp &nbsp<span><?php echo $status; ?></span>
                   </div>
-
                   </h1>
                 </div>
 
@@ -209,7 +219,9 @@ if (!isset($_SESSION['id'])) {
                       </div>
 
                       <div class="second-row">
-                        <div class="second-title">Total Price: <?php echo $row[3]; ?>$</div>
+                        <button>Print</button>
+                        <div class="second-title">Shipping: <?php echo $row[8]; ?></div>
+                        <div class="second-title">Total Price: <?php echo $row[7]; ?>₾</div>
                       </div>
                     </div>
                   </div>
