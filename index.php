@@ -13,11 +13,11 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . $_SERVER['REQUEST_URI'])) {
 	exit();
 }
 
-if(!isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
+if (!isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
 	$pass = "password";
 	$email = "test@gmail.com";
 	$name = "TempUser";
-	$expirationTime = time()+86400;
+	$expirationTime = time() + 86400;
 
 	$insert = "INSERT INTO users(name, email, password) VALUES('$name', '$email', '$pass')";
 	mysqli_query($conn, $insert);
@@ -46,14 +46,18 @@ if(!isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
 			</div>
 		</div>
 	</div>
-
-	<!--PreLoader-->
-	<!-- <div class="loader">
-		<div class="loader-inner">
-			<div class="circle"></div>
-		</div>
-	</div> -->
-	<!--PreLoader Ends-->
+	
+	<!--additional CSS-->
+	<style>
+		.out-of-stock-label {
+			position: absolute;
+			background-color: red;
+			color: white;
+			padding: 5px;
+			z-index: 1;
+		}
+	</style>
+	<!--additional CSS-->
 
 	<!-- header -->
 	<?php
@@ -149,6 +153,9 @@ if(!isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
 				while ($row = mysqli_fetch_array($result)) { ?>
 					<div class="col-lg-3 col-md-6">
 						<div class="single-latest-news">
+							<?php if ($row[5] <= 0) : ?>
+								<div class="out-of-stock-label">Out of Stock</div>
+							<?php endif; ?>
 							<a href="productView.php?id=<?php echo $row[0]; ?>"><img class="latest-news-bg" id="MediaImg" width="100%" height="180" src="AdminPanel/dist/productImageView.php?image_id=<?php echo $row[0]; ?> "></a>
 							<div class="news-text-box">
 								<h3><?php echo $row[1] ?></h3>
@@ -345,7 +352,7 @@ if(!isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
 		function sendVariable(variable, instock) {
 			//alert(variable);
 			// Send the variable to the server using jQuery's AJAX function
-			if(instock == 0 ){
+			if (instock == 0) {
 				alert("Product Not In Stock");
 			}
 			$.ajax({

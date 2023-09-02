@@ -7,6 +7,17 @@ include('parts/head.php');
 ?>
 
 <body>
+	<!--additional CSS-->
+	<style>
+		.out-of-stock-label {
+			position: absolute;
+			background-color: red;
+			color: white;
+			padding: 5px;
+			z-index: 1;
+		}
+	</style>
+	<!--additional CSS-->
 
 	<!--PreLoader-->
 	<div class="loader">
@@ -50,6 +61,7 @@ include('parts/head.php');
 		$flTime = $row["flowering_time"];
 		$genetics = $row["Genetics"];
 		$description = $row["description"];
+		$instock = $row["instock"];
 	}
 	?>
 
@@ -74,6 +86,9 @@ include('parts/head.php');
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
+						<?php if ($instock <= 0) : ?>
+							<div class="out-of-stock-label">Out of Stock</div>
+						<?php endif; ?>
 						<img src="AdminPanel/dist/productImageView.php?image_id=<?php echo $pId; ?> " alt="">
 					</div>
 				</div>
@@ -156,6 +171,9 @@ include('parts/head.php');
 				while ($row = mysqli_fetch_array($result)) { ?>
 					<div class="col-lg-3 col-md-6">
 						<div class="single-latest-news">
+							<?php if ($row[5] <= 0) : ?>
+								<div class="out-of-stock-label">Out of Stock</div>
+							<?php endif; ?>
 							<a href="productView.php?id=<?php echo $row[0]; ?>"><img class="latest-news-bg" id="MediaImg" width="100%" height="180" src="AdminPanel/dist/productImageView.php?image_id=<?php echo $row[0]; ?> "></a>
 							<div class="news-text-box">
 								<h3><?php echo $row[1] ?></h3>

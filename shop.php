@@ -5,6 +5,17 @@ include('parts/head.php');
 ?>
 
 <body>
+	<!--additional CSS-->
+	<style>
+		.out-of-stock-label {
+			position: absolute;
+			background-color: red;
+			color: white;
+			padding: 5px;
+			z-index: 1;
+		}
+	</style>
+	<!--additional CSS-->
 
 	<!--PreLoader-->
 	<div class="loader">
@@ -94,6 +105,9 @@ include('parts/head.php');
 					<div class="col-lg-3 col-md-6">
 						<div class="single-latest-news">
 							<a href="productView.php?id=<?php echo $row[0]; ?>"><img class="latest-news-bg" id="MediaImg" width="100%" height="180" src="AdminPanel/dist/productImageView.php?image_id=<?php echo $row[0]; ?> "></a>
+							<?php if ($row[5] <= 0) : ?>
+								<div class="out-of-stock-label">Out of Stock</div>
+							<?php endif; ?>
 							<div class="news-text-box">
 								<h3><?php echo $row[1] ?></h3>
 								<p class="blog-meta">
@@ -164,7 +178,7 @@ include('parts/head.php');
 					if (instock == 0) {
 						alert("Product Not In Stock");
 					}
-					
+
 					$.ajax({
 						type: "POST",
 						url: "addToCart.php",

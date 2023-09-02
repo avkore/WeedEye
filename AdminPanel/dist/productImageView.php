@@ -18,4 +18,3 @@ if (isset($_GET['image_id'])) {
 }
 
 ?>
-
