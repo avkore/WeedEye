@@ -90,7 +90,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <script>
     // Define the function that sends the variable to the server
-    function sendVariable(variable) {
+    function sendVariable(variable, entityType) {
         //alert(variable);
         // Send the variable to the server using jQuery's AJAX function
         $('#deleteButton').click(function() {
@@ -98,7 +98,7 @@ if (mysqli_num_rows($result) > 0) {
                 type: "POST",
                 url: "deleteB.php",
                 data: {
-                    blog: 'blog',
+                    entityType: 'blog',
                     variable: variable
                 },
                 success: function(response) {
