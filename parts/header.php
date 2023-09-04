@@ -55,15 +55,14 @@ session_start();
 										<a class="mobile-hide  shopping-cart " href="cart.php">
 											<?php
 											if (isset($_SESSION['id'])) {
-												$id = $_SESSION['id'];}
-											elseif (isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
+												$id = $_SESSION['id'];
+											} elseif (isset($_COOKIE['id']) && !isset($_SESSION['id'])) {
 												$id = $_COOKIE['id'];
 											}
 											$count = "SELECT * from card_items WHERE user_id=$id AND submited=0";
 											if ($resultcount = mysqli_query($conn, $count)) {
 												$total_orders = mysqli_num_rows($resultcount);
-											}
-											else{
+											} else {
 												$total_orders = 0;
 											}
 											?>

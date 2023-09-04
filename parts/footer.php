@@ -17,9 +17,9 @@
                         <li>
                             <ul>
                                 <li>
-                                    <a href="https://t.me/avko" target="_blank"><i class="fas fa-paper-plane mr-10"></i></a>&nbsp
+                                    <a href="https://t.me/someone" target="_blank"><i class="fas fa-paper-plane mr-10"></i></a>&nbsp
                                     <a href="https://discord.gg/midjourney" target="_blank"><i class="fab fa-discord"></i></a>&nbsp
-                                    <a href="https://wa.me/557979927" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                    <a href="https://wa.me/551916455" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                 </li>
                             </ul>
                         </li>
