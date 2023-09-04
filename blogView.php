@@ -27,14 +27,14 @@ include('parts/head.php');
 	<!-- end search arewa -->
 
 	<?php
-		$pId = $_GET['id'];
-		$query = "SELECT * FROM blogs WHERE id=$pId";
-		$result = mysqli_query($conn, $query);
-		if (mysqli_num_rows($result) > 0) {
-			$row = mysqli_fetch_assoc($result);
-			$blog_name = $row["name"];
-			$description = $row["description"];
-			$blog_date = $row["date"];
+	$pId = $_GET['id'];
+	$query = "SELECT * FROM blogs WHERE id=$pId";
+	$result = mysqli_query($conn, $query);
+	if (mysqli_num_rows($result) > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$blog_name = $row["name"];
+		$description = $row["description"];
+		$blog_date = $row["date"];
 	}
 	?>
 
@@ -60,7 +60,7 @@ include('parts/head.php');
 				<div class="col-lg-8">
 					<div class="single-article-section">
 						<div class="single-article-text">
-						<img class="latest-news-bg" id="MediaImg" height="450" src="AdminPanel/dist/blogImageView.php?image_id=<?php echo $pId; ?> ">
+							<img class="latest-news-bg" id="MediaImg" height="450" src="AdminPanel/dist/blogImageView.php?image_id=<?php echo $pId; ?> ">
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
 								<span class="date"><i class="fas fa-calendar"></i><?php echo $blog_date ?></span>
@@ -74,18 +74,20 @@ include('parts/head.php');
 					<div class="sidebar-section">
 						<div class="recent-posts">
 							<h4>Recent Posts</h4>
-							<ul>
-								<li><a href="single-news2.php">Blackberry Moonrock Cocktail</a></li>
-								<li><a href="single-news3.php">Cannabis Varieties</a></li>
-								<li><a href="single-news4.php">How to store Seeds</a></li>
-								<li><a href="single-news5.php">How to germinate Seeds</a></li>
-								<li><a href="single-news6.php">Life Cycle of Cannabis</a></li>
-							</ul>
+							<?php
+							$query1 = "SELECT * FROM blogs ORDER BY date ASC";
+							$result1 = mysqli_query($conn, $query1);
+							while ($row = mysqli_fetch_array($result1)) {
+							?>
+								<ul>
+									<li><a href="blogView.php?id=<?php echo $row[0]; ?>"><?php echo $row[1]; ?></a></li>
+								</ul><?php  } ?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 	<!-- end single article section -->
 
