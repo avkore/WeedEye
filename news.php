@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <style>
 	.blogname {
 		height: 50px;
@@ -84,7 +85,7 @@ function selectFirstCharacters($inputString, $charCount)
 								</p>
 								<p class="excerpt" maxlength="12"><?php
 																	$inputString = $row['description'];
-																	$charCount = 220; // Change this to the desired number of characters
+																	$charCount = 320; // Change this to the desired number of characters
 																	$selectedCharacters = selectFirstCharacters($inputString, $charCount);
 																	echo $selectedCharacters;
 																	?>...</p>
