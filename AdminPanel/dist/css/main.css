@@ -1651,6 +1651,7 @@ progress::-ms-fill {
     border-bottom-right-radius: .25rem;
     border-bottom-left-radius: .25rem;
     border-top-width: 1px;
+    width: 100%;
 }
 
 .modal-card-foot .button:not(:last-child) {

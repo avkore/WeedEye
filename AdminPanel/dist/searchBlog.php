@@ -48,6 +48,9 @@ if (mysqli_num_rows($result) > 0) {
         <td>' . $description . '</td>
         <td class="actions-cell">
         <div class="buttons right nowrap">
+        <button class="button small blue --jb-modal" onclick="Edit(' . $row1[0] . ');" data-target="edit-blog-modal" type="button">
+            <span class="icon"><i class="mdi mdi-pencil"></i></span>
+        </button>
         <button class="button small red --jb-modal" onclick="sendVariable(' . $row1[0] . ');" data-target="sample-modal" type="button">
             <span class="icon"><i class="mdi mdi-trash-can"></i></span>
           </button>
@@ -83,6 +86,29 @@ if (mysqli_num_rows($result) > 0) {
     </div>
 </div>
 
+<div id="edit-blog-modal" class="modal">
+    <div class="modal-background --jb-modal-close"></div>
+    <div class="modal-card-1">
+        <div class="modal-content">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Edit Blog</p>
+            </header>
+            <section class="modal-card-body">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="text" name="name" class="form-control mb-1" placeholder="Blog Title" required>
+                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg, image/jpg" class="form-control mb-1" placeholder="Image" required />
+                    <textarea name="description" class="form-control mb-1" placeholder="Blog Description" rows="4" required></textarea>
+                    <footer class="modal-card-foot">
+                        <button class="button --jb-modal-close">Cancel</button>
+                        <button name="updateButton" id="updateButton" type="submit" class="button red --jb-modal-close">Confirm</button>
+                    </footer>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+
 <script type="text/javascript" src="js/main.min.js?v=1628755089081"></script>
 
 
@@ -97,6 +123,25 @@ if (mysqli_num_rows($result) > 0) {
             $.ajax({
                 type: "POST",
                 url: "deleteB.php",
+                data: {
+                    entityType: 'blog',
+                    variable: variable
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        });
+    }
+
+    // Define the function that sends the variable to the server
+    function Edit(variable, entityType) {
+        //alert(variable);
+        // Send the variable to the server using jQuery's AJAX function
+        $('#updateButton').click(function() {
+            $.ajax({
+                type: "POST",
+                url: "editB.php",
                 data: {
                     entityType: 'blog',
                     variable: variable
