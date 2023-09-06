@@ -30,9 +30,9 @@ include('parts/head.php');
 
 	use PHPMailer\PHPMailer\PHPMailer;
 
-	require 'PHPMailer-master/src/Exception.php';
-	require 'PHPMailer-master/src/PHPMailer.php';
-	require 'PHPMailer-master/src/SMTP.php';
+	require 'vendor/PHPMailer-master/src/Exception.php';
+	require 'vendor/PHPMailer-master/src/PHPMailer.php';
+	require 'vendor/PHPMailer-master/src/SMTP.php';
 
 	function function_alert($msg)
 	{
