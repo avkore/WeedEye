@@ -214,11 +214,16 @@ if (!isset($_SESSION['id'])) {
 
                       <div class="second-row">
                         <div class="second-title">
-                          <a href="generatePDF.php?id=<?php echo $row[0]; ?>">print</a>
-                          <p>Shipping: <?php echo $row[8]; ?></p>
-                          <p>Total Price: <?php echo $row[7]; ?>₾</p>
+                          <div class="link">
+                            <button class="btns print-button"><a style="color:white;" href="generatePDF.php?id=<?php echo $row[0]; ?>">print</a></button>
+                          </div>
+                          <div class="spans">
+                            <span>Shipping: <?php echo $row[8]; ?></span>
+                            <span>Total Price: <?php echo $row[7]; ?>₾</span>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>

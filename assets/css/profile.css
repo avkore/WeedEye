@@ -367,6 +367,7 @@ body {
 .second-row {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.589);
+    height: 70px;
     border-top: 1px solid var(--secondary-orange);
     display: flex;
     flex-direction: row;
@@ -375,6 +376,20 @@ body {
     align-items: center;
     padding: 0 20px;
 }
+
+.second-title{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.spans{
+    display: flex;
+    flex-direction: column;
+}
+
 
 .order:focus-visible .dropdown-content {
     display: flex;
@@ -415,6 +430,8 @@ body {
     outline: none;
     font-size: 15px;
   }
+
+ 
   
   .collapsible:hover {
     background-color: rgb(29, 29, 29);
@@ -559,3 +576,21 @@ body {
         font-size: x-small;
     }
 }
+
+@media screen and (max-width: 465px) {
+    .second-title span {
+        font-size: small;
+    }
+
+    .second-row {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .print-button {
+        width: 70px;
+        font-size: medium;
+        font-weight: 200;
+    }
+  }
+  
