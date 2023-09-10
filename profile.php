@@ -135,7 +135,7 @@ if (!isset($_SESSION['id'])) {
               <br><button class="btns" name="updateInfo" id="updateprofile">Update Profile</button>
             </form>
 
-            <div class="settingbuttons">   
+            <div class="settingbuttons">
               <button class="btns" id="deleteBtn">Delete Account</button>
             </div>
 
@@ -185,16 +185,11 @@ if (!isset($_SESSION['id'])) {
               while ($row = mysqli_fetch_array($result)) {
                 $newString = str_replace(',', " <br> ", $row[6]);
 
-                if ($row['status'] == 0) 
-                {
+                if ($row['status'] == 0) {
                   $status = "Pending";
-                } 
-                else if ($row['status'] == 1) 
-                {
+                } else if ($row['status'] == 1) {
                   $status = "Finished";
-                }
-                else
-                {
+                } else {
                   $status = "Current";
                 }
 
@@ -213,15 +208,16 @@ if (!isset($_SESSION['id'])) {
                     <div class="prod-title">Products</div>
                     <div class="product-list">
 
-
                       <div class="product1 product">
                         <span><?php echo $newString; ?> </span>
                       </div>
 
                       <div class="second-row">
-                        <button>Print</button>
-                        <div class="second-title">Shipping: <?php echo $row[8]; ?></div>
-                        <div class="second-title">Total Price: <?php echo $row[7]; ?>₾</div>
+                        <div class="second-title">
+                          <a href="generatePDF.php?id=<?php echo $row[0]; ?>">print</a>
+                          <p>Shipping: <?php echo $row[8]; ?></p>
+                          <p>Total Price: <?php echo $row[7]; ?>₾</p>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -367,12 +367,11 @@ body {
 .second-row {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.589);
-    height: 30px;
     border-top: 1px solid var(--secondary-orange);
     display: flex;
     flex-direction: row;
     color: white;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     padding: 0 20px;
 }
