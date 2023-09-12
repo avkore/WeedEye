@@ -1867,3 +1867,11 @@ footer {
         width: 40%;
     }
 }
+
+
+/* my edited shit */
+#textarea{
+    width: 60%;
+    border: black 1px solid;
+    max-height: 400px;
+}

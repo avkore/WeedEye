@@ -95,9 +95,8 @@ if (mysqli_num_rows($result) > 0) {
             </header>
             <section class="modal-card-body">
                 <form action="" method="post" enctype="multipart/form-data">
-                    <input type="text" name="name" class="form-control mb-1" placeholder="Blog Title" required>
-                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg, image/jpg" class="form-control mb-1" placeholder="Image" required />
-                    <textarea name="description" class="form-control mb-1" placeholder="Blog Description" rows="4" required></textarea>
+                    <input type="text" name="blogName" id="blogName" class="form-control mb-1" placeholder="Blog Title" required>
+                    <textarea name="blogDescription" id="textarea" class="form-control mb-1" placeholder="Blog Description" rows="4" required></textarea>
                     <footer class="modal-card-foot">
                         <button class="button --jb-modal-close">Cancel</button>
                         <button name="updateButton" id="updateButton" type="submit" class="button red --jb-modal-close">Confirm</button>
@@ -134,22 +133,29 @@ if (mysqli_num_rows($result) > 0) {
         });
     }
 
-    // Define the function that sends the variable to the server
-    function Edit(variable, entityType) {
-        //alert(variable);
+
+    // Move the event binding outside the function
+    function Edit(variable) {
         // Send the variable to the server using jQuery's AJAX function
         $('#updateButton').click(function() {
+            var blogName = $('#blogName').val();
+            var blogDescription = $('#textarea').val();
+
             $.ajax({
                 type: "POST",
-                url: "editB.php",
+                url: "editBlog.php",
                 data: {
-                    entityType: 'blog',
-                    variable: variable
+                    variable: variable,
+                    blogName: blogName,
+                    blogDescription: blogDescription
                 },
                 success: function(response) {
                     window.location.reload();
+                },
+                error: function() {
+                    alert('error!');
                 }
             });
         });
-    }
+    } 
 </script>
